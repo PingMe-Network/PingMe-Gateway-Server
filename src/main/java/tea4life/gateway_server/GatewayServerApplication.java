@@ -18,6 +18,8 @@ public class GatewayServerApplication {
     private String musicServiceUrl;
     @Value("${service.url.reel}")
     private String reelServiceUrl;
+    @Value("${service.url.utility}")
+    private String utilityServiceUrl;
 
     public static void main(String[] args) {
         SpringApplication.run(GatewayServerApplication.class, args);
@@ -52,6 +54,10 @@ public class GatewayServerApplication {
                         .uri(reelServiceUrl)
                 )
 
+                .route("utility-service-route", r -> r
+                        .path("/api/admin/**", "/utility-service/**")
+                        .uri(utilityServiceUrl)
+                )
                 .build();
     }
 }
