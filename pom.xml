@@ -60,6 +60,11 @@
             <scope>test</scope>
         </dependency>
 
+        <!--Redis Limiter-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>
     </dependencies>
 
 
