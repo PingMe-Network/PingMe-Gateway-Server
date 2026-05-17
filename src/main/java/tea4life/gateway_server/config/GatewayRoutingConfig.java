@@ -63,6 +63,8 @@ public class GatewayRoutingConfig {
                 .route("music-service-route", r -> r
                         .path("/music-service/**")
                         .filters(f -> f
+                                .dedupeResponseHeader("Access-Control-Allow-Origin", "RETAIN_FIRST")
+                                .dedupeResponseHeader("Access-Control-Allow-Credentials", "RETAIN_FIRST")
                                 .requestRateLimiter(c -> c
                                         .setRateLimiter(redisRateLimiter)
                                         .setKeyResolver(userIdKeyResolver)
